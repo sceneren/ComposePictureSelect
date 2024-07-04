@@ -56,8 +56,9 @@ class MainActivity : ComponentActivity() {
                                                     params = PictureSelectParams(
                                                         maxImageNum = 1,
                                                         isCrop = true,
+                                                        isCompress = true,
                                                         imageEngine = CoilEngine(),
-                                                        cropEngine = UCropEngine()
+                                                        cropEngine = UCropEngine(1F,1F)
                                                     )
                                                 )
                                                 .firstOrNull()

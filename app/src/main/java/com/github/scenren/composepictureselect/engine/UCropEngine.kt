@@ -2,6 +2,7 @@ package com.github.scenren.composepictureselect.engine
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.util.Log
@@ -13,7 +14,11 @@ import com.luck.picture.lib.engine.CropFileEngine
 import com.yalantis.ucrop.UCrop
 import com.yalantis.ucrop.UCropImageEngine
 
-class UCropEngine : CropFileEngine {
+class UCropEngine(
+    private val ratioX: Float,
+    private val ratioY: Float,
+    private val showCircle: Boolean = false
+) : CropFileEngine {
 
     override fun onStartCrop(
         fragment: Fragment?,
@@ -26,6 +31,16 @@ class UCropEngine : CropFileEngine {
         // Intent中需要给MediaStore.EXTRA_OUTPUT，塞入裁剪后的路径；如果有额外数据也可以通过CustomIntentKey.EXTRA_CUSTOM_EXTRA_DATA字段存入；
         if (srcUri == null || destinationUri == null) return
         val uCrop = UCrop.of(srcUri, destinationUri, dataSource)
+        uCrop.withAspectRatio(ratioX, ratioY)
+        val option = UCrop.Options().apply {
+            this.setCircleDimmedLayer(showCircle)
+            this.setShowCropGrid(!showCircle)
+            this.setHideBottomControls(true)
+            this.setStatusBarColor(Color.WHITE)
+            this.isDarkStatusBarBlack(true)
+        }
+        uCrop.withOptions(option)
+
         uCrop.setImageEngine(object : UCropImageEngine {
             override fun loadImage(context: Context?, url: String?, imageView: ImageView?) {
                 if (context == null || imageView == null) return
