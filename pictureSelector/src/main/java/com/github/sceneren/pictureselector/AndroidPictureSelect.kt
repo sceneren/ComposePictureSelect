@@ -105,7 +105,13 @@ class AndroidPictureSelect constructor(
                 .setImageEngine(params.imageEngine)
                 .setSelectionMode(if (maxNum > 1) SelectModeConfig.MULTIPLE else SelectModeConfig.SINGLE)
                 .isWithSelectVideoImage(withSelectVideoImages)
-                .setSelectorUIStyle(WhiteStyle.getStyle(context, params.isWhiteStyle))
+                .setSelectorUIStyle(
+                    WhiteStyle.getStyle(
+                        context,
+                        params.isWhiteStyle,
+                        params.bottomOpen
+                    )
+                )
                 .forResult(object : OnResultCallbackListener<LocalMedia?> {
                     override fun onResult(result: ArrayList<LocalMedia?>) {
                         val mediaList = result.mapNotNull { localMedia ->

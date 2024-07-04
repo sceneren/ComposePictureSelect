@@ -10,7 +10,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import coil.imageLoader
 import coil.request.ImageRequest
-import com.luck.picture.lib.engine.CropFileEngine
+import com.github.sceneren.pictureselector.engine.ICropEngine
 import com.yalantis.ucrop.UCrop
 import com.yalantis.ucrop.UCropImageEngine
 
@@ -18,7 +18,7 @@ class UCropEngine(
     private val ratioX: Float,
     private val ratioY: Float,
     private val showCircle: Boolean = false
-) : CropFileEngine {
+) : ICropEngine() {
 
     override fun onStartCrop(
         fragment: Fragment?,

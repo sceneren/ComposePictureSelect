@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import com.github.sceneren.pictureselector.R
 import com.luck.picture.lib.style.BottomNavBarStyle
 import com.luck.picture.lib.style.PictureSelectorStyle
+import com.luck.picture.lib.style.PictureWindowAnimationStyle
 import com.luck.picture.lib.style.SelectMainStyle
 import com.luck.picture.lib.style.TitleBarStyle
 
@@ -14,11 +15,32 @@ object WhiteStyle {
 
     private var whiteSelectorStyle: PictureSelectorStyle? = null
 
-    fun getStyle(context: Context, isWhite: Boolean): PictureSelectorStyle {
+    private val scaleEnterAnim by lazy {
+        PictureWindowAnimationStyle().apply {
+            setActivityEnterAnimation(com.luck.picture.lib.R.anim.ps_anim_enter)
+            setActivityExitAnimation(com.luck.picture.lib.R.anim.ps_anim_exit)
+        }
+
+    }
+
+    private val bottomEnterAnim by lazy {
+        PictureWindowAnimationStyle().apply {
+            setActivityEnterAnimation(com.luck.picture.lib.R.anim.ps_anim_up_in)
+            setActivityExitAnimation(com.luck.picture.lib.R.anim.ps_anim_down_out)
+        }
+    }
+
+    fun getStyle(context: Context, isWhite: Boolean, bottomOpen: Boolean): PictureSelectorStyle {
         return if (isWhite) {
             getWhiteStyle(context = context)
         } else {
             getBlackStyle()
+        }.apply {
+            windowAnimationStyle = if (bottomOpen) {
+                bottomEnterAnim
+            } else {
+                scaleEnterAnim
+            }
         }
     }
 

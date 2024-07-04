@@ -17,6 +17,8 @@ import com.luck.picture.lib.engine.ImageEngine
  * @constructor
  */
 data class PictureSelectParams(
+    val imageEngine: ImageEngine,
+    val cropEngine: CropFileEngine,
     val maxImageNum: Int,
     val maxVideoNum: Int = 0,
     val maxFileKbSize: Long = 300L,
@@ -24,6 +26,5 @@ data class PictureSelectParams(
     val allowTakePicture: Boolean = true,
     val isCrop: Boolean = false,
     val isCompress: Boolean = true,
-    val imageEngine: ImageEngine,
-    val cropEngine: CropFileEngine,
+    val bottomOpen: Boolean = true,
 )

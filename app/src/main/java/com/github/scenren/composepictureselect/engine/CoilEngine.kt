@@ -5,6 +5,7 @@ import android.widget.ImageView
 import coil.imageLoader
 import coil.request.ImageRequest
 import coil.transform.RoundedCornersTransformation
+import com.github.sceneren.pictureselector.engine.IImageEngine
 import com.luck.picture.lib.engine.ImageEngine
 import com.luck.picture.lib.utils.ActivityCompatHelper
 
@@ -13,7 +14,7 @@ import com.luck.picture.lib.utils.ActivityCompatHelper
  * @date：2022/2/14 3:00 下午
  * @describe：CoilEngine
  */
-class CoilEngine : ImageEngine {
+class CoilEngine : IImageEngine() {
     override fun loadImage(context: Context, url: String, imageView: ImageView) {
         if (!ActivityCompatHelper.assertValidRequest(context)) {
             return

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.sceneren"
-version = "0.0.5"
+version = "0.0.9"
 
 afterEvaluate {
     publishing {
