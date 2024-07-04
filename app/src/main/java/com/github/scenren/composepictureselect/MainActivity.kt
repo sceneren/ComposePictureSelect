@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                                             pictureSelector
                                                 .selectPhoto(
                                                     params = PictureSelectParams(
-                                                        maxImageNum = 1,
+                                                        maxImageNum = 3,
                                                         isCrop = true,
                                                         isCompress = true,
                                                         imageEngine = CoilEngine(),

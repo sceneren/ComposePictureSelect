@@ -1,9 +1,17 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+//    id("maven-publish")
 }
 
 android {
+//    publishing {
+//        singleVariant("release") {
+//            withSourcesJar()
+//        }
+//
+//    }
+
     namespace = "com.github.sceneren.pictureselector"
     compileSdk = 34
 
@@ -43,6 +51,20 @@ android {
         }
     }
 }
+
+//publishing {
+//    publications {
+//        register<MavenPublication>("release") {
+//            groupId = "com.github.scenren"
+//            artifactId = "ComposePictureSelector"
+//            version = "0.0.2"
+//
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//        }
+//    }
+//}
 
 dependencies {
     implementation(libs.androidx.core.ktx)
