@@ -9,6 +9,8 @@ pluginManagement {
         }
         mavenCentral()
         maven(url = "https://jitpack.io")
+//        maven { url = uri("https://central.sonatype.com") }
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         gradlePluginPortal()
     }
 }
@@ -18,8 +20,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven(url = "https://jitpack.io")
+//        maven { url = uri("https://central.sonatype.com") }
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 
 rootProject.name = "ComposePictureSelect"
 include(":app")
+include(":pictureSelector")
