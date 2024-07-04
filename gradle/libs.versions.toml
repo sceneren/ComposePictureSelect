@@ -43,6 +43,7 @@ ps-ucrop = { group = "io.github.lucksiege", name = "ucrop", version.ref = "pictu
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
 
 [bundles]
 coil = ["coil-core", "coil-gif", "coil-svg", "coil-video","coil-compose"]
