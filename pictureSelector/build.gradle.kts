@@ -24,12 +24,6 @@ afterEvaluate {
 }
 
 android {
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-
-    }
 
     namespace = "com.github.sceneren.pictureselector"
     compileSdk = 34
