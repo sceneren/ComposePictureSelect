@@ -20,6 +20,7 @@ data class PictureSelectParams(
     val maxImageNum: Int,
     val maxVideoNum: Int = 0,
     val maxFileKbSize: Long = 300L,
+    val isWhiteStyle: Boolean = true,
     val allowTakePicture: Boolean = true,
     val isCrop: Boolean = false,
     val isCompress: Boolean = true,

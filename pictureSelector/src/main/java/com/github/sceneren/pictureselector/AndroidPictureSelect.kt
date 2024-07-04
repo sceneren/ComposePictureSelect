@@ -2,8 +2,10 @@ package com.github.sceneren.pictureselector
 
 import android.content.Context
 import com.github.sceneren.pictureselector.engine.CompressEngine
+import com.github.sceneren.pictureselector.style.WhiteStyle
 import com.luck.picture.lib.basic.PictureSelector
 import com.luck.picture.lib.config.SelectMimeType
+import com.luck.picture.lib.config.SelectModeConfig
 import com.luck.picture.lib.entity.LocalMedia
 import com.luck.picture.lib.interfaces.OnResultCallbackListener
 import com.luck.picture.lib.utils.SandboxTransformUtils
@@ -75,6 +77,8 @@ class AndroidPictureSelect constructor(
         return callbackFlow {
             PictureSelector.create(context)
                 .openGallery(params.asChooseMode())
+                .isDirectReturnSingle(true)
+                .isFastSlidingSelect(true)
                 // 文件沙盒
                 .setSandboxFileEngine { context, srcPath, mineType, call ->
                     if (call != null) {
@@ -99,7 +103,9 @@ class AndroidPictureSelect constructor(
                 .setMaxVideoSelectNum(params.maxVideoNum)
                 .isDisplayCamera(params.allowTakePicture)
                 .setImageEngine(params.imageEngine)
+                .setSelectionMode(if (maxNum > 1) SelectModeConfig.MULTIPLE else SelectModeConfig.SINGLE)
                 .isWithSelectVideoImage(withSelectVideoImages)
+                .setSelectorUIStyle(WhiteStyle.getStyle(context, params.isWhiteStyle))
                 .forResult(object : OnResultCallbackListener<LocalMedia?> {
                     override fun onResult(result: ArrayList<LocalMedia?>) {
                         val mediaList = result.mapNotNull { localMedia ->
