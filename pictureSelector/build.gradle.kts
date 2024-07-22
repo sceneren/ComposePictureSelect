@@ -1,27 +1,12 @@
 plugins {
+    `maven-publish`
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.mavenPublish)
+    alias(libs.plugins.kotlin.android)
+//    alias(libs.plugins.kotlin.compose)
 }
 
 group = "com.github.sceneren"
 version = "0.0.9"
-
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            create<MavenPublication>("release") {
-                // Applies the component for the release build variant.\
-                // from(components["release"])
-                // You can then customize attributes of the publication as shown below.
-                groupId = (group.toString())
-                artifactId = "composePictureSelector"
-                version = version
-            }
-        }
-    }
-}
 
 android {
 
@@ -61,6 +46,19 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.sceneren"
+            artifactId = "compose-picture-select"
+
+            afterEvaluate {
+                from(components["release"])
+            }
         }
     }
 }

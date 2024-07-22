@@ -38,12 +38,11 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 ps-core = { group = "io.github.lucksiege", name = "pictureselector", version.ref = "pictureSelector" }
 ps-compress = { group = "io.github.lucksiege", name = "compress", version.ref = "pictureSelector" }
 ps-ucrop = { group = "io.github.lucksiege", name = "ucrop", version.ref = "pictureSelector" }
-
+coreDesugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.0.4" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
-
+#kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 [bundles]
 coil = ["coil-core", "coil-gif", "coil-svg", "coil-video","coil-compose"]
