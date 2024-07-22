@@ -5,12 +5,21 @@ plugins {
 //    alias(libs.plugins.kotlin.compose)
 }
 
-group = "com.github.sceneren"
-version = "0.0.9"
-
 android {
 
     namespace = "com.github.sceneren.pictureselector"
+
+    buildFeatures {
+        compose = true
+    }
+
+
+    kotlinOptions {
+        freeCompilerArgs += listOf(
+            "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+        )
+    }
+
     compileSdk = 34
 
     defaultConfig {
@@ -31,11 +40,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
